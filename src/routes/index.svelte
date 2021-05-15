@@ -3,7 +3,6 @@
 </script>
 
 <script>
-	import Counter from '$lib/Counter/index.svelte';
 	import Blocklist from '$lib/Blocklist/index.svelte';
 </script>
 
@@ -13,12 +12,12 @@
 
 <section>
 	<h1>
-		<div class="welcome">
+		<!-- <div class="welcome">
 			<picture>
 				<source srcset="svelte-welcome.webp" type="image/webp" />
 				<img src="svelte-welcome.png" alt="Welcome" />
 			</picture>
-		</div>
+		</div> -->
 
 		mini<strong>eth</strong>
 	</h1>

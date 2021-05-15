@@ -11,16 +11,7 @@
 </svelte:head>
 
 <section>
-	<h1>
-		<!-- <div class="welcome">
-			<picture>
-				<source srcset="svelte-welcome.webp" type="image/webp" />
-				<img src="svelte-welcome.png" alt="Welcome" />
-			</picture>
-		</div> -->
-
-		mini<strong>eth</strong>
-	</h1>
+	<h1>mini<strong>eth</strong></h1>
 
 	<h2>Block Number</h2>
 

@@ -8,6 +8,7 @@
 		<a href="https://kit.svelte.dev">
 			<img src={logo} alt="SvelteKit" />
 		</a>
+		minieth
 	</div>
 
 	<nav>

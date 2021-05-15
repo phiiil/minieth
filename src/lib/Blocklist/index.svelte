@@ -1,40 +1,30 @@
 <script>
 	console.log('Blocklist');
 	import { onMount } from 'svelte';
-	import { spring } from 'svelte/motion';
 	import { ethers } from 'ethers';
 
 	const provider = new ethers.providers.JsonRpcProvider({
 		url: 'https://mainnet.infura.io/v3/9b9f057582ab4e2bbb44024ba59e56f7'
 	});
 
-	let count = 0;
-	function updateBlockNumber() {
-		provider.getBlockNumber().then((bn) => {
-			count = bn;
-		});
-		setTimeout(updateBlockNumber, 10000);
-	}
+	let blockNumber;
 
-	const displayed_count = spring();
-	$: displayed_count.set(count);
-	$: offset = modulo($displayed_count, 1);
-
-	function modulo(n, m) {
-		// handle negative numbers
-		return ((n % m) + m) % m;
-	}
+	provider.on('block', (bn) => {
+		console.log(`[event] block: ${bn}`);
+		blockNumber = bn;
+	});
 
 	onMount(() => {
-		updateBlockNumber();
+		provider.getBlockNumber().then((bn) => {
+			blockNumber = bn;
+		});
 	});
 </script>
 
 <div class="counter">
 	<div class="counter-viewport">
-		<div class="counter-digits" style="transform: translate(0, {100 * offset}%)">
-			<strong style="top: -100%" aria-hidden="true">{Math.floor($displayed_count + 1)}</strong>
-			<strong>{Math.floor($displayed_count)}</strong>
+		<div class="counter-digits">
+			<strong>{blockNumber}</strong>
 		</div>
 	</div>
 </div>

@@ -1,5 +1,4 @@
 <script>
-	console.log('Blocklist');
 	import { onMount, onDestroy } from 'svelte';
 	import { ethers } from 'ethers';
 

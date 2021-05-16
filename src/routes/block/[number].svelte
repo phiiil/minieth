@@ -6,9 +6,9 @@
 			url: 'https://mainnet.infura.io/v3/9b9f057582ab4e2bbb44024ba59e56f7'
 		});
 		let bn = Number(page.params.number);
-		console.log(`getting block ${bn}`);
+		//console.log(`getting block ${bn}`);
 		return provider.getBlock(bn).then((b) => {
-			console.log(`got block: ${bn}: ${JSON.stringify(b)}`);
+			//console.log(`got block: ${bn}: ${JSON.stringify(b)}`);
 			return {
 				props: {
 					block: b
@@ -34,6 +34,5 @@
 
 <section>
 	<h1>Block #{block.number}</h1>
-	<div>{block.hash}</div>
-	<Block />
+	<Block {block} />
 </section>

@@ -3,7 +3,7 @@
 </script>
 
 <script>
-	import Blocklist from '$lib/Blocklist/index.svelte';
+	import Blocklist from '$lib/Blocklist/blocklist.svelte';
 </script>
 
 <svelte:head>

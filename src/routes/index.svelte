@@ -13,8 +13,6 @@
 <section>
 	<h1>mini<strong>eth</strong></h1>
 
-	<h2>Block Number</h2>
-
 	<Blocklist />
 </section>
 

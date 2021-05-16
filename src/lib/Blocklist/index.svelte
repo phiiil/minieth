@@ -59,7 +59,7 @@
 			{#each blocksPage as b}
 				<li>
 					{b.number}
-					<a target="_blank" href="">
+					<a target="_blank" href="/block/{b.number}">
 						{b.transactions.length}
 						{b.gasLimit}
 						{b.gasUsed}

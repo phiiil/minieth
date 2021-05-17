@@ -9,6 +9,7 @@
     "format": "prettier --write --plugin-search-dir=. ."
   },
   "devDependencies": {
+    "@sveltejs/adapter-vercel": "next",
     "@sveltejs/kit": "next",
     "chota": "^0.8.0",
     "eslint": "^7.22.0",

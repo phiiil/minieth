@@ -3,6 +3,7 @@
 </script>
 
 <script>
+	import { Button } from 'svelte-chota';
 	import Block from '$lib/Block/block.svelte';
 	import Blockrow from '$lib/blockrow.svelte';
 
@@ -13,15 +14,20 @@
 		url: 'https://mainnet.infura.io/v3/9b9f057582ab4e2bbb44024ba59e56f7'
 	});
 
-	let pageSize = 12;
+	let pageSize = 6;
 	let blockNumber;
 	const blocks = [];
 	let selectedBlock = null;
+	let moreCount = 0;
 
 	// provider.on('block', (bn) => {
 	// 	console.log(`[event] block: ${bn}`);
 	// 	blockNumber = bn;
 	// });
+
+	function compareByNumber(a, b) {
+		return a.number - b.number;
+	}
 
 	function getBlocks() {
 		console.log(`Updating ${pageSize} blocks starting at ${blockNumber}...`);
@@ -33,6 +39,11 @@
 				//blocks[bn] = b;
 				blocks.push(b);
 				blocks = blocks;
+				blocks.sort(compareByNumber);
+				// select first block returned
+				if (!selectedBlock) {
+					selectedBlock = b;
+				}
 			});
 		}
 	}
@@ -63,7 +74,12 @@
 
 <section>
 	<h1>mini<strong>eth</strong></h1>
-	<Blockrow {blocks} {selectBlock} />
+	<div>
+		<Button class="pull-left"><small>&lt; previous blocks</small></Button>
+		<Button class="pull-right"><small>{moreCount} more blocks &gt;</small></Button>
+	</div>
+	<Blockrow {blocks} bind:selectedBlock />
+	<!-- {selectBlock} -->
 	<Block block={selectedBlock} />
 </section>
 
@@ -78,20 +94,5 @@
 
 	h1 {
 		width: 100%;
-	}
-
-	.welcome {
-		position: relative;
-		width: 100%;
-		height: 0;
-		padding: 0 0 calc(100% * 495 / 2048) 0;
-	}
-
-	.welcome img {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		display: block;
 	}
 </style>

@@ -1,6 +1,13 @@
 # minieth
 A simple Ethereum blockchain explorer for week 3 of ChainShot
 
+Todo: 
+*Search bar
+* click left and right on block row for more blocks
+* update block number and (more button) automatically
+* Add Transactions View
+* Add something about contracts and method call
+
 # create-svelte
 
 Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte);

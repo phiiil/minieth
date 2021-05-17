@@ -3,7 +3,7 @@
 </script>
 
 <script>
-	import { Row, Col, Button } from 'svelte-chota';
+	import { Container, Row, Col, Button } from 'svelte-chota';
 	import Block from '$lib/Block/block.svelte';
 	import Blockrow from '$lib/blockrow.svelte';
 
@@ -21,11 +21,11 @@
 	let selectedBlock = null;
 	let moreCount = 0;
 
-	// provider.on('block', (bn) => {
-	// 	console.log(`[event] block: ${bn}`);
-	// 	blockNumber = bn;
-	// 	blockNumberChanged();
-	// });
+	provider.on('block', (bn) => {
+		console.log(`[event] block: ${bn}`);
+		blockNumber = bn;
+		blockNumberChanged();
+	});
 
 	function blockNumberChanged() {
 		let ns = blocks.map((b) => b.number);
@@ -82,25 +82,34 @@
 </svelte:head>
 
 <section>
-	<h1>mini<strong>eth</strong></h1>
-	<div>
-		<Button class="pull-left"><small>&lt; previous blocks</small></Button>
-		<Button class="pull-right" on:click={refreshToLatest}>
-			<small>{moreCount} more blocks &gt;</small>
-		</Button>
-	</div>
-
-	<Blockrow {blocks} bind:selectedBlock />
-	<div>
+	<Container>
 		<Row>
-			<Col size="8">
-				<Block block={selectedBlock} />
+			<Col size="1">
+				<Button class="outline primary pull-left"><small>&lt; previous blocks</small></Button>
 			</Col>
-			<Col size="4">
-				<Block block={selectedBlock} />
+			<Col size="10">
+				<div>
+					<h1>mini<strong>eth</strong></h1>
+				</div>
+			</Col>
+			<Col size="1">
+				<Button class="pull-right" on:click={refreshToLatest}>
+					<small>{moreCount} more blocks &gt;</small>
+				</Button>
 			</Col>
 		</Row>
-	</div>
+
+		<Blockrow {blocks} bind:selectedBlock />
+
+		<Row>
+			<Col size="12">
+				<Block block={selectedBlock} />
+			</Col>
+			<!-- <Col size="4">
+				<Block block={selectedBlock} />
+			</Col> -->
+		</Row>
+	</Container>
 </section>
 
 <style>

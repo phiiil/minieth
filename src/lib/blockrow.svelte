@@ -31,7 +31,14 @@
 						{b.transactions.length} txs <br />
 						{(b.gasUsed / b.transactions.length).toFixed(0)} Gas/Tx <br />
 					</small>
-					<div class="footer is-right"><small>footer</small></div>
+					<div class="footer is-right">
+						<a href="/block/{b.number}">
+							<img
+								src="https://icongr.am/entypo/chevron-with-circle-right.svg?size=16&color=ff7f00"
+								alt="block detail"
+							/>
+						</a>
+					</div>
 				</div>
 			</Col>
 		{/each}
@@ -47,5 +54,6 @@
 	.selected {
 		border-style: solid;
 		border-color: orange;
+		background: rgb(254, 230, 187);
 	}
 </style>

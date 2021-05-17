@@ -4,6 +4,7 @@
 
 :global(:root) {
 	--accent-color: #f58427;
+	--color-primary: #14854F;
 }
 
 :root {

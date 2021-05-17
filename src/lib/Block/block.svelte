@@ -13,17 +13,12 @@
 	<div class="card blockdetail">
 		{#if block}
 			<table>
-				<tr>
-					<td>
-						<img src="https://icongr.am/entypo/address.svg?size=16&color=ff7f00" />
-						Block height</td
-					>
-					<td>
-						<!-- <button seconday>&lt;</button> -->
-						{block.number}
-						<!-- <button>&gt;</button> -->
-					</td>
-				</tr>
+				<thead>
+					<tr>
+						<th>Block </th>
+						<th>{block.number}</th>
+					</tr>
+				</thead>
 				<tr>
 					<td><img src="https://icongr.am/entypo/bookmarks.svg?size=16&color=ff7f00" /> Hash</td>
 					<td>

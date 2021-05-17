@@ -16,7 +16,7 @@
 
 	let pageSize = 6;
 	let blockNumber;
-	const blocks = [];
+	let blocks = [];
 	let selectedBlock = null;
 	let moreCount = 0;
 

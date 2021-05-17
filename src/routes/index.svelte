@@ -16,6 +16,7 @@
 
 	let pageSize = 6;
 	let blockNumber;
+	let displayedBlockNumber;
 	let blocks = [];
 	let selectedBlock = null;
 	let moreCount = 0;
@@ -23,7 +24,15 @@
 	// provider.on('block', (bn) => {
 	// 	console.log(`[event] block: ${bn}`);
 	// 	blockNumber = bn;
+	// 	blockNumberChanged();
 	// });
+
+	function blockNumberChanged() {
+		let ns = blocks.map((b) => b.number);
+		displayedBlockNumber = Math.max(...ns);
+		console.log(`displayBlockNumber: ${displayedBlockNumber}`);
+		moreCount = blockNumber - displayedBlockNumber;
+	}
 
 	function compareByNumber(a, b) {
 		return a.number - b.number;
@@ -36,30 +45,30 @@
 			//console.log(`getting block #${bn}`);
 			let b = provider.getBlock(bn).then((b) => {
 				//console.log(`got block: ${bn}: ${JSON.stringify(b)}`);
-				//blocks[bn] = b;
-				blocks.push(b);
-				blocks = blocks;
-				blocks.sort(compareByNumber);
-				// select first block returned
-				if (!selectedBlock) {
-					selectedBlock = b;
+				if (!blocks.map((b) => b.number).includes(b.number)) {
+					blocks.push(b);
+					blocks = blocks.sort(compareByNumber).slice(-6);
+					// select first block returned
+					if (!selectedBlock) {
+						selectedBlock = b;
+					}
+					blockNumberChanged();
 				}
 			});
 		}
 	}
 
-	function selectBlock(b) {
-		console.log(`block selected in main ${JSON.stringify(b)}`);
-		selectedBlock = b;
-	}
-
-	onMount(() => {
-		console.log(`on mount`);
+	function refreshToLatest() {
 		provider.getBlockNumber().then((bn) => {
 			console.log(`latest block number: ${bn}`);
 			blockNumber = bn;
 			getBlocks();
 		});
+	}
+
+	onMount(() => {
+		console.log(`on mount`);
+		refreshToLatest();
 	});
 
 	onDestroy(() => {
@@ -76,10 +85,12 @@
 	<h1>mini<strong>eth</strong></h1>
 	<div>
 		<Button class="pull-left"><small>&lt; previous blocks</small></Button>
-		<Button class="pull-right"><small>{moreCount} more blocks &gt;</small></Button>
+		<Button class="pull-right" on:click={refreshToLatest}>
+			<small>{moreCount} more blocks &gt;</small>
+		</Button>
 	</div>
+
 	<Blockrow {blocks} bind:selectedBlock />
-	<!-- {selectBlock} -->
 	<div>
 		<Row>
 			<Col size="8">

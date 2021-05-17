@@ -1,5 +1,4 @@
 <script>
-	import tr from 'date-fns/locale/tr';
 	import { utils, BigNumber } from 'ethers';
 	import { Card, Details, Button } from 'svelte-chota';
 

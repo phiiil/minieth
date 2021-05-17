@@ -1,12 +1,16 @@
 # minieth
 A simple Ethereum blockchain explorer for week 3 of ChainShot
 
-Todo: 
-*Search bar
+## TODO
+* use VITE_config
+* Search bar by block, tx or other Account
 * click left and right on block row for more blocks
 * update block number and (more button) automatically
 * Add Transactions View
 * Add something about contracts and method call
+
+## DONE
+* DONE Deploy to Vercel
 
 # create-svelte
 

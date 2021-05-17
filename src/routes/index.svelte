@@ -3,7 +3,7 @@
 </script>
 
 <script>
-	import { Button } from 'svelte-chota';
+	import { Row, Col, Button } from 'svelte-chota';
 	import Block from '$lib/Block/block.svelte';
 	import Blockrow from '$lib/blockrow.svelte';
 
@@ -80,7 +80,16 @@
 	</div>
 	<Blockrow {blocks} bind:selectedBlock />
 	<!-- {selectBlock} -->
-	<Block block={selectedBlock} />
+	<div>
+		<Row>
+			<Col size="8">
+				<Block block={selectedBlock} />
+			</Col>
+			<Col size="4">
+				<Block block={selectedBlock} />
+			</Col>
+		</Row>
+	</div>
 </section>
 
 <style>

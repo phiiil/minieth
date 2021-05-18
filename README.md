@@ -1,5 +1,7 @@
 # minieth
-A simple Ethereum blockchain explorer for week 3 of ChainShot
+A simple Ethereum blockchain explorer for week 3 of ChainShot. 
+Try it out [minieth](https://minieth.vercel.app/).
+
 
 ## TODO
 * use VITE_config

@@ -14,17 +14,24 @@
 		url: 'https://mainnet.infura.io/v3/9b9f057582ab4e2bbb44024ba59e56f7'
 	});
 
+	const LIMIT_EVENTS = 20;
 	let pageSize = 6;
 	let blockNumber;
 	let displayedBlockNumber;
 	let blocks = [];
 	let selectedBlock = null;
 	let moreCount = 0;
+	let eventCount = 0;
 
 	provider.on('block', (bn) => {
 		console.log(`[event] block: ${bn}`);
 		blockNumber = bn;
 		blockNumberChanged();
+		eventCount++;
+		if (eventCount > LIMIT_EVENTS) {
+			console.log(`Stopping block events listening`);
+			provider.off('block');
+		}
 	});
 
 	function blockNumberChanged() {

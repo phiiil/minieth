@@ -1,6 +1,7 @@
 <script>
 	import { page } from '$app/stores';
 	import logo from './svelte-logo.svg';
+	import github from './github-logo.svg';
 </script>
 
 <header>
@@ -24,7 +25,9 @@
 	</nav>
 
 	<div class="corner">
-		<!-- TODO put something else here? github link? -->
+		<a href="https://github.com/phiiil/minieth">
+			<img src={github} alt="Github" />
+		</a>
 	</div>
 </header>
 

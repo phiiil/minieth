@@ -5,14 +5,19 @@ Try it out [minieth](https://minieth.vercel.app/).
 
 ## TODO
 * use VITE_config
+
 * Search bar by block, tx or other Account
 * click left and right on block row for more blocks
 * update block number and (more button) automatically
-* Add Transactions View
+## Todo but difficult
 * Add something about contracts and method call
+* Tokens sent vs. received
 
 ## DONE
 * DONE Deploy to Vercel
+* Add Transactions View
+* Link in header to github
+* Stop provider event listening after 10 blocks
 
 # create-svelte
 

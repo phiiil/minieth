@@ -24,9 +24,10 @@
   "dependencies": {
     "@fontsource/fira-mono": "^4.2.2",
     "@lukeed/uuid": "^2.0.0",
+    "abi-decoder": "^2.4.0",
+    "buffer": "^6.0.3",
     "cookie": "^0.4.1",
     "date-fns": "^2.21.3",
-    "ethereum-input-data-decoder": "^0.3.2",
     "ethers": "^5.1.4"
   }
 }

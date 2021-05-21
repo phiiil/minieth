@@ -2,8 +2,18 @@
 A simple Ethereum blockchain explorer for week 3 of ChainShot. 
 Try it out [minieth](https://minieth.vercel.app/).
 
+'''
+      var Buffer2;
+      try {
+        Buffer2 = (init_buffer(), buffer_exports).Buffer;
+      } catch (e) {
+      }
+''' 
+
+
 
 ## TODO
+* TEST DECODE WITH A index.js file
 * use VITE_config
 
 * Search bar by block, tx or other Account
@@ -57,3 +67,20 @@ npm run build
 ```
 
 > You can preview the built app with `npm run preview`, regardless of whether you installed an adapter. This should _not_ be used to serve your app in production.
+
+
+#Package Issues
+## safe-buffer issues in Svelte
+1. Added safe-buffer to vite config:
+'''
+    vite: {
+			optimizeDeps: {
+				include: ['safe-buffer'],
+			}
+		}
+'''
+## Randombytes issue (global not found)
+Added this in App.html
+'''
+   <script>var global = globalThis</script>
+'''

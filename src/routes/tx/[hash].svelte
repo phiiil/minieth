@@ -2,26 +2,31 @@
 	// Page preload
 	// Get Block With Transactions
 	import { ethers, BigNumber } from 'ethers';
+
 	export async function load({ page, fetch, session, context }) {
 		const provider = new ethers.providers.JsonRpcProvider({
 			url: 'https://mainnet.infura.io/v3/9b9f057582ab4e2bbb44024ba59e56f7'
 		});
 		let hash = page.params.hash;
 		console.log(`getting tx ${hash}`);
-
 		return provider.getTransaction(hash).then((tx) => {
-			console.log(`got tx: ${JSON.stringify(tx)}`);
+			//console.log(`got tx: ${JSON.stringify(tx)}`);
 			return {
 				props: {
 					tx: tx
 				}
 			};
 		});
+		return {
+			status: res.status,
+			error: new Error(`Could not load ${url}`)
+		};
 
-		// return {
-		// 	status: res.status,
-		// 	error: new Error(`Could not load ${url}`)
-		// };
+		return {
+			props: {
+				tx: {}
+			}
+		};
 	}
 </script>
 

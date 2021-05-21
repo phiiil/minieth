@@ -1,8 +1,8 @@
 <script>
-	import { Card, Details, Button } from 'svelte-chota';
-	import { onMount } from 'svelte';
+	import FormatUnits from '$lib/formatUnits.svelte';
+	import FormatCallData from '$lib/formatCallData.svelte';
+	import { Details } from 'svelte-chota';
 	import { utils, BigNumber } from 'ethers';
-	import AbiDecoder from 'abi-decoder';
 
 	export let trx;
 	let decodedData;
@@ -13,19 +13,6 @@
 	} else if (trx.data != 0 && trx.value == 0) {
 		typeString = 'ERC20 Token Transfer';
 	}
-
-	onMount(async () => {
-		console.log(`On Mount`);
-		const res = await fetch(`/static/0x7a250d5630b4cf539739df2c5dacb4c659f2488d.json`);
-		console.log(res);
-		const abi = await res.json();
-		if (trx && abi) {
-			console.log(`abi: ${abi}`);
-			AbiDecoder.addABI(abi);
-			let decodedDataObject = AbiDecoder.decodeMethod(trx.data);
-			decodedData = JSON.stringify(decodedDataObject);
-		}
-	});
 </script>
 
 <div>
@@ -74,7 +61,7 @@
 						<img src="https://icongr.am/entypo/air.svg?size=16&color=ff7f00" />
 						Value</td
 					>
-					<td>{trx.value} </td>
+					<td><FormatUnits value={trx.value} /></td>
 				</tr>
 				<tr>
 					<td>
@@ -97,7 +84,7 @@
 				<tr>
 					<td>
 						<img src="https://icongr.am/entypo/bar-graph.svg?size=16&color=ff7f00" /> Data</td
-					><td>{decodedData || trx.data} </td></tr
+					><td><FormatCallData callData={trx.data} to={trx.to} /></td></tr
 				>
 			</table>
 

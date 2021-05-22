@@ -6,16 +6,23 @@
 	// units to convert to
 	// https://docs.ethers.io/v5/api/utils/display-logic/#utils-formatUnits
 	export let units = 'ether';
-	export let unitsLabel = true;
+	export let showUnits = true;
 
 	console.log(`format value ${value} into ${units}`);
 	let valueString = '';
 	if (value) {
 		valueString = utils.formatUnits(value, units);
-		if (unitsLabel) {
-			valueString += ' ' + units;
-		}
 	}
 </script>
 
-<span>{valueString}</span>
+<span
+	>{valueString}
+	{#if showUnits} <span class="units">{units}</span> {/if}</span
+>
+
+<style>
+	.units {
+		color: var(--primary-color);
+		text-transform: capitalize;
+	}
+</style>

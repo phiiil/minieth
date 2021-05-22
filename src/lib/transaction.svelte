@@ -69,7 +69,7 @@
 						Gas Price</td
 					>
 					<td>
-						{trx.gasPrice ? utils.formatUnits(trx.gasPrice, 'gwei') : 0} Gwei
+						<FormatUnits value={trx.gasPrice} units="gwei" />
 					</td>
 				</tr>
 				<tr>
